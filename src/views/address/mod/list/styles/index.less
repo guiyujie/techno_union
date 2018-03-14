@@ -1,0 +1,75 @@
+@import (reference) '~utils/common.less';
+
+.box {
+    border-bottom: 1px solid #f3f3f3;
+    margin-bottom: 28/75rem;
+    background-color: #fff;
+    .box();
+    .box-hvcenter();
+    .flag {
+        font-size: 40/75rem;
+        width: 100/75rem;
+        color: #dedede;
+        text-align: center;
+    }
+    .info {
+        .flex-grow();
+        margin-top: 25/75rem;
+        margin-bottom: 20/75rem;
+        .name {
+            font-size: 32/75rem;
+            font-weight: 500;
+        }
+        .address {
+            color: #ccc;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            p {
+                font-size: 28/75rem;
+                overflow: hidden;
+                width: 500/75rem;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                span {
+                    display: none;
+                }
+                .default {
+                    display: inline-block;
+                    color: #10aeff;
+                }
+            }
+        }
+    }
+    .link {
+        font-size: 40/75rem;
+        width: 100/75rem;
+        color: #dedede;
+        text-align: center;
+        .size {
+            color: #10aeff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            font-size: 40/75rem;
+        }
+        .border{
+            height: 113/75rem;
+            border-left: 1px solid #eee;
+            position: relative;
+        }
+    }
+
+    .selected {
+        .isize{
+            color: #10aeff;
+            font-size: 40/75rem;
+        }
+    }
+}
+
+.isize{
+    font-size: 40/75rem;
+}
+
+

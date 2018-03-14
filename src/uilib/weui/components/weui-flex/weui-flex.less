@@ -1,0 +1,24 @@
+/*
+* 模块描述:组件-flex布局
+*/
+@charset "UTF-8";
+
+@import "../../base/fn";
+
+.weui-flex {
+    display: -moz-box; /*Firefox*/
+    display: -webkit-box; /*Safari,Opera,Chrome*/
+    display: flex;
+    display: -webkit-flex;
+}
+.weui-flex__item{
+
+    -webkit-box-flex: 1.0;
+    -moz-flex-grow: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+
+    -moz-box-flex: 1.0; /*Firefox*/
+    -webkit-box-flex: 1.0; /*Safari,Opera,Chrome*/
+    flex: 1;
+}

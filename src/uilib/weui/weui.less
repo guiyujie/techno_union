@@ -1,0 +1,84 @@
+/*
+* 框架名称：weuiv1.1.1
+* 框架描述：WeUI 是一套同微信原生视觉体验一致的基础样式库,可以令用户的使用感知更加统一。
+*/
+
+@import "base/reset";  //初始化
+
+// icon font
+@import "icon/weui-icon_font"; //图标+操作提示（图标）(tpl.html)
+
+//组件
+// button
+@import "components/weui-button/weui-button"; //按钮库(tpl.html)
+
+// cell
+@import "components/weui-cell/weui-cell_global"; //组件-表单title+底部说明文字tips(tpl.html)
+
+@import "components/weui-cell/weui-access"; //组件-access(tpl.html)
+@import "components/weui-cell/weui-check";  //check入口文件（含有radio/checkbox,check_common）(tpl.html)
+@import "components/weui-cell/weui-form";  //form入口文件（含有form_common,form-preview,select,vcode）(tpl.html)
+@import "components/weui-cell/weui-gallery"; //组件-gallery大图+删除按钮(tpl.html)
+@import "components/weui-cell/weui-gallery"; //组件-gallery大图+删除按钮(tpl.html)
+@import "components/weui-cell/weui-switch"; //组件-switch开关(tpl.html)
+@import "components/weui-cell/weui-uploader";  //组件-uploader图片上传(tpl.html)
+
+// msg
+@import "components/weui-page/weui-msg";  //组件-msg失败提示页/成功提示页(tpl.html)
+
+// article
+@import "components/weui-page/weui-article";  //组件-article文章(tpl.html)
+
+// tab
+@import "components/weui-tab/weui-tab";  //组件-tab选项卡(tpl.html)
+
+// progress
+@import "components/weui-progress/weui-progress";  //组件-progress进度条(tpl.html)
+
+// panel
+@import "components/weui-panel/weui-panel";  //组件-panel面板(tpl.html)
+
+// media box
+@import "components/weui-media-box/weui-media-box"; //组件-图文列表(panel组件中的图文列表)(tpl.html)
+
+// grid
+@import "components/weui-grid/weui-grid";  //组件-grid九宫格(tpl.html)
+
+// copyright
+@import "components/weui-footer/weui-footer";  //组件-footer底部通用(tpl.html)
+
+
+// flex
+@import "components/weui-flex/weui-flex";  //组件-flex布局(tpl.html)
+
+// tips
+@import "components/weui-tips/weui-dialog";  //组件-dialog弹出框(tpl.html)
+@import "components/weui-tips/weui-toast";  //组件-toast提示（3秒消失）(tpl.html)
+@import "components/weui-tips/weui-mask";  //组件-mask遮罩层
+@import "components/weui-tips/weui-actionsheet";  //组件-actionsheet弹出式菜单（分为IOS和Android）(tpl.html)
+@import "components/weui-tips/weui-loadmore";  //组件-loadmore加载更多(tpl.html)
+@import "components/weui-tips/weui-badge"; //组件-badge徽章（展示新消息,小红点）(tpl.html)
+
+//searchbar
+@import "components/weui-searchbar/weui-searchbar";  //组件-search-bar搜索栏(tpl.html)
+
+// picker
+@import "components/weui-picker/weui-picker";  //组件-picker多列选择器(tpl.html)
+
+// animate
+@import "components/weui-animate/weui-animate";  //组件-animation动画效果（含方法）
+
+// agree
+@import "components/weui-agree/weui-agree";  //组件-（多选框+阅读并同意《相关条款》）(tpl.html)
+
+// loading
+@import "components/weui-loading/weui-loading";  //组件-加载中（按钮上放置）（含方法）(tpl.html)
+
+// slider
+@import "components/weui-slider/weui-slider";  //组件-slider滑块(tpl.html)
+
+//layout layout需要自写
+@import "layout/layout-page";  //layout-page
+
+//baseless与weui样式冲突修复
+@import "baseweui/baseweui";  //baseweui

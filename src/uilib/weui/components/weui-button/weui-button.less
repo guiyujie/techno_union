@@ -1,0 +1,67 @@
+/*
+* 模块描述:按钮入口文件
+*/
+@charset "UTF-8";
+
+
+@import "../../base/fn";
+@import "weui-btn_global";  //默认按钮公共样式
+@import "weui-btn_default";  //默认按钮
+@import "weui-btn_primary"; //主操作按钮
+@import "weui-btn_warn";  //警告按钮
+@import "weui-btn_disabled";  //禁用按钮
+@import "weui-btn_loading"; //加载中按钮
+@import "weui-btn_plain"; //空心按钮（辅助按钮）
+
+button, input {
+    &.weui-btn {
+        width: 100%;
+        border-width: 0;
+        outline: 0;
+        -webkit-appearance: none;
+        &:focus {
+            outline: 0;
+        }
+    }
+    &.weui-btn_inline,&.weui-btn_mini {
+        width: auto;
+    }
+    &.weui-btn_plain-primary,&.weui-btn_plain-default{
+        border-width: 1px;
+        background-color: transparent;
+    }
+}
+
+.weui-btn_mini {
+    display: inline-block;
+    padding: 0 1.32em;
+    line-height: @weuiBtnMiniHeight;
+    font-size: @weuiBtnMiniFontSize;
+}
+
+
+/*gap between btn*/
+.weui-btn + .weui-btn {
+    margin-top: @weuiBtnDefaultGap;
+}
+
+.weui-btn.weui-btn_inline + .weui-btn.weui-btn_inline {
+    margin-top: auto;
+    margin-left: @weuiBtnDefaultGap;
+}
+
+.weui-btn-area {
+    margin: @weuiCellsMarginTop @weuiBtnDefaultGap @weuiCellsMarginTop;
+}
+.weui-btn-area_inline {
+     display: -webkit-box; /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */     display: -moz-box; /* 老版本语法: Firefox (buggy) */     display: -ms-flexbox; /* 混合版本语法: IE 10 */     display: -webkit-flex; /* 新版本语法: Chrome 21+ */     display: flex; /* 新版本语法: Opera 12.1, Firefox 22+ */
+    .weui-btn {
+        margin-top: auto;
+        margin-right: @weuiBtnDefaultGap;
+        width: 100%;
+        flex: 1;
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}

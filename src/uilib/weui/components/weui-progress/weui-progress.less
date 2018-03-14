@@ -1,0 +1,30 @@
+/*
+* 模块描述:组件-progress进度条
+*/
+@charset "UTF-8";
+
+
+@import "../../base/fn";
+
+.weui-progress {
+     display: -webkit-box; /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */     display: -moz-box; /* 老版本语法: Firefox (buggy) */     display: -ms-flexbox; /* 混合版本语法: IE 10 */     display: -webkit-flex; /* 新版本语法: Chrome 21+ */     display: flex; /* 新版本语法: Opera 12.1, Firefox 22+ */
+    align-items: center;-webkit-align-items: center;
+}
+
+.weui-progress__bar {
+    background-color: @weuiProgressBg;
+    height: @weuiProgressHeight;
+    flex: 1;
+}
+
+.weui-progress__inner-bar {
+    width: 0;
+    height: 100%;
+    background-color: @weuiProgressColor;
+}
+
+.weui-progress__opr {
+    display: block;
+    margin-left: 30/75rem;
+    font-size: 0;
+}

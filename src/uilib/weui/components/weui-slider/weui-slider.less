@@ -1,0 +1,53 @@
+/*
+* 模块描述:组件-slider滑块
+*/
+@charset "UTF-8";
+
+
+@import "../../base/fn";
+
+.weui-slider {
+    padding: 30/75rem 36/75rem;;
+    user-select: none;
+}
+
+.weui-slider__inner {
+    position: relative;
+    height: 2px;
+    background-color: #E9E9E9;
+}
+
+.weui-slider__track {
+    height: 2px;
+    background-color: @weuiColorPrimary;
+    width: 0;
+}
+
+.weui-slider__handler {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 56/75rem;
+    height: 56/75rem;
+    margin-left: -14px;
+    margin-top: -14px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .2);
+}
+
+
+.weui-slider-box{
+     display: -webkit-box; /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */     display: -moz-box; /* 老版本语法: Firefox (buggy) */     display: -ms-flexbox; /* 混合版本语法: IE 10 */     display: -webkit-flex; /* 新版本语法: Chrome 21+ */     display: flex; /* 新版本语法: Opera 12.1, Firefox 22+ */
+    align-items: center;-webkit-align-items: center;
+    .weui-slider{
+        flex: 1;
+    }
+}
+.weui-slider-box__value {
+    margin-left: .5em;
+    min-width: 48/75rem;
+    color: #888888;
+    text-align: center;
+    font-size: 28/75rem;
+}

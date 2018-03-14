@@ -1,0 +1,51 @@
+/*
+* 模块描述：文字超出截断（单行超出截断省略号/多行超出省略号/文字排版/单词换行自动加连接符-）
+*/
+@charset "UTF-8";
+
+
+.ellipsis(@w:auto) { //单行超出截断省略号
+    width: @w;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+
+.ellipsisLn(@line) {  //line行超出省略号
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: @line;  //@line可配置截断行数
+}
+
+.text_wrap() {  //英文单词排版
+    word-wrap:break-word;
+    word-break:break-all;
+}
+
+/*
+*1，word-break:break-all 例如div宽200px，它的内容就会到200px自动换行，
+如果该行末端有个英文单词很长（congratulation等），它会把单词截断，
+变成该行末端为conra(congratulation的前端部分)，下一行为tulation（conguatulation）的后端部分了。
+*2，word-wrap:break-word 例子与上面一样，
+但区别就是它会把congratulation整个单词看成一个整体，
+如果该行末端宽度不够显示整个单词，它会自动把整个单词放到下一行，而不会把单词截断掉的。
+*/
+
+.hyphens() {
+    word-wrap:break-word;
+    -webkit-hyphens:auto;  //单词在支持hyphens的浏览器中换行时自动加了横杠断行：
+    hyphens:auto;
+}
+
+
+//===============
+//使用示例：======
+//===============
+//word-break:break-all和word-wrap:break-word的区别
+//http://www.zhangxinxu.com/wordpress/2015/11/diff-word-break-break-all-word-wrap-break-word/
+//
+//hyphens介绍：
+//http://www.bubuko.com/infodetail-530374.html

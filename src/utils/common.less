@@ -1,0 +1,103 @@
+/**/
+@rem: 75;
+
+/*
+    一些常用的方法函数
+*/
+.box{
+    display: -webkit-box; /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+    display: -ms-flexbox; /* 混合版本语法: IE 10 */
+    display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+    display: flex; /* 新版本语法: Opera 12.1, Firefox 22+ */
+}
+
+.box-hcenter(){
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+.box-vcenter(){
+    -webkit-box-align: center;
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.box-hvcenter(){
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+
+    -webkit-box-align: center;
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+
+.box-dirow(){
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -moz-flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+}
+
+.box-direverse(){
+    -webkit-box-pack: end;
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: horizontal;
+    -moz-flex-direction: row-reverse;
+    -webkit-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+}
+
+.box-dircolumn(){
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -moz-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+.box-dircolumnreverse(){
+    -webkit-box-pack: end;
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: vertical;
+    -moz-flex-direction: column-reverse;
+    -webkit-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+}
+
+//填充
+.flex-grow(){
+    -webkit-box-flex: 1.0;
+    -moz-flex-grow: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+}
+
+//缩小
+.flex-shrink(){
+    -webkit-box-flex: 1.0;
+    -moz-flex-shrink: 1;
+    -webkit-flex-shrink: 1;
+    flex-shrink: 1;
+}
+
+.txt-num(){
+    color: #FF8500;
+}
+.txt-shadow(){
+    text-shadow:#000 0.04rem 0 0,#000 0 0.04rem 0,#000 -0.04rem 0 0,#000 0 -0.04rem 0;
+}
+
+.txt-normal-white(){
+    color:#fff;
+    font-size: 26/75rem;
+}
+
+.coin-text(){
+    font-size: 40/75rem;
+    text-shadow:#000 0.04rem 0 0,#000 0 0.04rem 0,#000 -0.04rem 0 0,#000 0 -0.04rem 0;
+    line-height: 60/75rem;
+}

@@ -1,0 +1,31 @@
+/*
+* 模块描述：入口文件（变量）
+*/
+@charset "UTF-8";
+
+//待整理成文件
+.gradient(@angle:to right,@start:#44c7fc,@stop:#3994fc){
+    background: -webkit-linear-gradient(@angle,@start,@stop);
+    background: -moz-linear-gradient(@angle,@start,@stop);
+    background: -o-linear-gradient(@angle,@start,@stop);
+    background: linear-gradient(@angle,@start,@stop);
+}
+
+// mixin
+@import "mixin/mobile"; //方法：(重置手机端)去掉点击a链接时出现的半透明灰色背景；
+@import "mixin/setOnepx"; //方法：设置边框（上/下/左/右）
+@import "mixin/setArrow"; //方法：设置箭头
+@import "mixin/text";  //方法：文字超出一/多行处理（带单词换行处理）
+
+
+// variable
+@import "variable/global";  //变量：字体类型变量
+@import "variable/color";  //变量：颜色变量
+
+
+@import "variable/weui-cell";  //变量：表单相关变量
+@import "variable/weui-button"; //变量：按钮相关变量
+@import "variable/weui-msg";  //变量：提示消息变量
+@import "variable/weui-grid";  //变量：grid变量
+@import "variable/weui-progress";  //变量：进度条变量
+@import "variable/weui-dialog";   //变量：弹框相关变量

@@ -1,0 +1,96 @@
+/*
+* 模块描述:组件-表单预览preview
+*/
+@charset "UTF-8";
+
+
+@import "../../../base/fn";
+
+.weui-form-preview{
+    position: relative;
+    background-color: #FFFFFF;
+    &:before{
+        .setTopLine(@weuiCellBorderColor);
+    }
+    &:after{
+        .setBottomLine(@weuiCellBorderColor);
+    }
+}
+.weui-form-preview__hd{
+    position: relative;
+    padding: @weuiCellGapV @weuiCellGapH;
+    text-align: right;
+    line-height: 2.5em;
+    &:after{
+        .setBottomLine(@weuiCellBorderColor);
+        left: @weuiCellGapH;
+    }
+    .weui-form-preview__value{
+        font-style: normal;
+        font-size: 1.6em;
+    }
+}
+.weui-form-preview__bd{
+    padding: @weuiCellGapV @weuiCellGapH;
+    font-size: .9em;
+    text-align: right;
+    color: @weuiTextColorGray;
+    line-height: 2;
+}
+.weui-form-preview__ft{
+    position: relative;
+    line-height:  100/75rem;
+     display: -webkit-box; /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */     display: -moz-box; /* 老版本语法: Firefox (buggy) */     display: -ms-flexbox; /* 混合版本语法: IE 10 */     display: -webkit-flex; /* 新版本语法: Chrome 21+ */     display: flex; /* 新版本语法: Opera 12.1, Firefox 22+ */
+    &:after {
+        .setTopLine(@weuiDialogLineColor);
+    }
+}
+.weui-form-preview__item{
+    overflow: hidden;
+}
+.weui-form-preview__label{
+    float: left;
+    margin-right: 1em;
+    min-width: 4em;
+    color: @weuiTextColorGray;
+    text-align: justify;
+    text-align-last: justify;
+}
+.weui-form-preview__value{
+    display: block;
+    overflow: hidden;
+    word-break:normal;
+    word-wrap: break-word;
+}
+.weui-form-preview__btn {
+    position: relative;
+    display: block;
+    flex: 1;
+    color: @weuiDialogLinkColor;
+    text-align: center;
+    .setTapColor();
+    button&{
+        background-color: transparent;
+        border: 0;
+        outline: 0;
+        line-height: inherit;
+        font-size: inherit;
+    }
+    &:active {
+        background-color: @weuiDialogLinkActiveBc;
+    }
+    &:after {
+        .setLeftLine(@weuiDialogLineColor);
+    }
+    &:first-child {
+        &:after {
+            display: none;
+        }
+    }
+}
+.weui-form-preview__btn_default {
+    color: @weuiTextColorGray;
+}
+.weui-form-preview__btn_primary {
+    color: #0BB20C;
+}

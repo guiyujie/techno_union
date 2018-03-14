@@ -1,0 +1,908 @@
+1.商城查询省份，城市及其对应关系接口
+接口地址：/api/mall/getProvinceCityList.do
+请求参数：无
+返回结果-成功：
+{
+    "status": "success",
+    "info": "查询成功",
+    "data": {
+		 "provinceList": {//省份列表
+				"0": [
+					{
+						"id": 1,//省份id
+						"name": "湖北省",//省份名称
+						"level": 1,//级别，1为省，直辖市，2为地级市，3为县，县级市，区
+						"pid": 0//父id，省份为顶级，故父id为0
+					}
+				]
+		 },
+		 "cityList": {
+				"1": [
+					{
+						"id": 8,//城市id
+						"name": "武汉市",//城市名称
+						"level": 2,//级别，1为省，直辖市，2为地级市，3为县，县级市，区
+						"pid": 1//父id，即所属省份id
+					}
+				]
+		 },
+		 "countyList": {
+				"8": [
+					{
+						"id": 18,//县市区id
+						"name": "江岸区",//县市区名称
+						"level": 3,//级别，1为省，直辖市，2为地级市，3为县，县级市，区
+						"pid": 8//父id，即所属城市id
+					}
+				]
+		 }
+    }
+}
+
+返回结果-失败：
+{
+	"status": "error",
+	"info": "查询失败",
+	"data": ""
+}
+
+
+2.保存或者修改收货地址
+接口地址：/api/mall/saveOrUpdateAddress.do
+请求参数：
+        id：地址信息id，修改地址时必传
+        provinceId：省份id
+		cityId：城市id
+		countyId：县市区id
+		address：详细地址
+		receiver：收件人
+		phoneNum：手机号
+		isDefault：是否设置为默认地址，0表示不是，1表示是
+		method:请求类型，取值save为保存地址，update为修改地址
+		
+返回结果-成功：
+{
+    "status": "success",
+    "info": "保存成功",
+    "data": ""
+}		
+
+返回结果-失败：
+{
+	"status": "error",
+	"info": "保存失败",
+	"data": ""
+}		
+
+
+3.获取地址列表
+接口地址：/api/mall/getAddressList.do
+请求参数： 无
+返回结果-成功：
+{
+    "status": "success",
+    "info": "查询成功",
+    "data": {
+	    "datas":[
+		    {
+				 "id":1,
+				 "provinceId":1,
+				 "provinceName":"湖北省",
+				 "cityId":8,
+				 "cityName":"武汉市",
+				 "countyId":18,
+				 "countyName":"江岸区",
+				 "address":"花园1号",
+				 "receiver":"张杰",
+				 "phoneNum":"15815865658",	
+                 "isDefault":0//是否是默认地址，0表示不是，1表示是				 
+			}
+		]
+	}
+}		
+
+返回结果-失败：
+{
+	"status": "error",
+	"info": "查询失败",
+	"data": ""
+}
+
+4.设置默认地址
+接口地址：/api/mall/setDefaultAddress.do
+请求参数：
+        id：地址信息id
+        		
+返回结果-成功：
+{
+    "status": "success",
+    "info": "设置成功",
+    "data": ""
+}		
+
+返回结果-失败：
+{
+	"status": "error",
+	"info": "设置失败",
+	"data": ""
+}	
+
+
+5.删除地址
+接口地址：/api/mall/deleteAddress.do
+请求参数：
+        id：地址信息id
+        		
+返回结果-成功：
+{
+    "status": "success",
+    "info": "删除成功",
+    "data": ""
+}		
+
+返回结果-失败：
+{
+	"status": "error",
+	"info": "删除失败",
+	"data": ""
+}
+
+
+6.获取商品列表
+接口地址：/api/mall/getGoodsList.do
+请求参数： 
+page：当前页码
+pageSize：每页显示条数
+
+返回结果-成功：
+{
+    "status": "success",
+    "info": "查询成功",
+    "data": {
+        "detailUrl": "http://ucmall.stnts.com/page/detail.do?pid=",
+        "totalCount": 1,
+        "imagePrefix": "http://ucmall.stnts.com/img/",
+        "mallProducts": [
+            {
+                "pAliasName": "键盘",
+                "checkNum": 1717,
+                "eVipHighestLevel": 0,
+                "image": "default/20170116/528ba7e3-a413-499c-b32c-842786352d43.jpg",
+                "biId": "20",
+                "limitNum": 0,
+                "exchangeNum": 137,
+                "pId": 152,
+                "price": 100,
+                "pName": "实物键盘1",
+                "stock": 989,
+                "description": "<p>123</p>",
+                "eVipLowestLevel": 1,
+                "vipType": 1,
+                "createDate": 1484029517000,
+                "pType": 1
+            }
+        ],
+        "pageNum": 1
+    }
+}
+
+返回结果-失败：
+{
+	"status": "error",
+	"info": "查询失败",
+	"data": ""
+}
+
+
+6.获取商品详细信息
+接口地址：/api/mall/getGoodsInfo.do
+请求参数： 
+ id：商品id
+返回结果-成功：
+{
+    "status": "success",
+    "info": "查询成功",
+    "data": {
+        "pid": 152,
+        "pName": "实物键盘1",
+        "pAliasName": "键盘",
+        "pType": "1",
+        "pStatus": "1",
+        "vipType": "1",
+        "eVipLowestLevel": 1,
+        "eVipHighestLevel": 0,
+        "originalPrice": null,
+        "presentPrice": null,
+        "stock": 989,
+        "description": "<p>123</p>",
+        "createDate": "2017-01-10 14:25:17.0",
+        "shelvesTime": "2017-07-31 09:16:29.0",
+        "createUser": "胡卫",
+        "lastModifyUser": "胡卫",
+        "lastModify": "2017-07-31 09:16:29.0",
+        "enabledEndDate": null,
+        "checkNum": 1718,
+        "exchangeNum": 137,
+        "limitNum": 0,
+        "availNum": 0,
+        "availDate": null,
+        "availUnit": 0,
+        "onlineStartDate": null,
+        "onlineEndDate": null,
+        "limitStartDate": null,
+        "limitEndDate": null,
+        "startDateSection": null,
+        "endDateSection": null,
+        "business": null,
+        "exchangeArea": "0",
+        "exchangeCond": null,
+        "icon": "http://ucmall.stnts.com/img/default/20170116/528ba7e3-a413-499c-b32c-842786352d43.jpg",
+        "isVip": null,
+        "items": null,
+        "detailUrl": null,
+        "attributes": [
+            {
+                "pid": 152,
+                "attributeKey": "ICON",
+                "attributeDefaultV": "default/20170116/528ba7e3-a413-499c-b32c-842786352d43.jpg",
+                "attributeNumV": 0,
+                "attributeDoubleV": null,
+                "createDate": "2017-07-27 16:52:03"
+            },
+            {
+                "pid": 152,
+                "attributeKey": "EXCHANGE_ITEM",
+                "attributeDefaultV": "17",
+                "attributeNumV": 1,
+                "attributeDoubleV": null,
+                "createDate": "2017-07-27 16:52:03"
+            },
+            {
+                "pid": 152,
+                "attributeKey": "EXCHANGE_ITEM",
+                "attributeDefaultV": "20",
+                "attributeNumV": 100,
+                "attributeDoubleV": null,
+                "createDate": "2017-07-27 16:52:03"
+            }
+        ],
+        "attributesMap": {
+            "EXCHANGE_ITEM": [
+                {
+                    "biId": 17,
+                    "bId": 30,
+                    "biName": "盛天积分",
+                    "biStatus": "NORMAL",
+                    "createDate": 1471919779000,
+                    "productExchangeNum": 1
+                },
+                {
+                    "biId": 20,
+                    "bId": 34,
+                    "biName": "易力币",
+                    "biStatus": "NORMAL",
+                    "createDate": 1501145352000,
+                    "productExchangeNum": 100
+                }
+            ],
+            "ICON": [
+                "default/20170116/528ba7e3-a413-499c-b32c-842786352d43.jpg"
+            ]
+        }
+    }
+}
+
+返回结果-失败：
+{
+	"status": "error",
+	"info": "查询失败",
+	"data": ""
+}	
+
+
+7.获取兑换记录列表
+接口地址：/api/mall/getExchangeList.do
+请求参数：
+page：当前页码
+pageSize：每页显示条数
+返回结果-成功：
+{
+    "status": "success",
+    "info": "查询成功",
+    "data": {
+        "datas": [
+            {
+                "eId": 79610,
+                "eOrderId": "20170317113144ECCUNB",
+                "pId": 153,
+                "passport": "zxm01",
+                "uid": 30984039,
+                "uType": "STNTS",
+                "eType": "VIRTUAL_ST_EXCHANGE",
+                "returnUrl": null,
+                "notifyUrl": null,
+                "createDate": "2017-03-17 11:31:44",
+                "addressId": null,
+                "exchangeStatuses": [
+                    {
+                        "eId": 79610,
+                        "bId": 27,
+                        "biId": 14,
+                        "exchangeBusinessStatus": "SEND_SUCCESS",
+                        "exchangeMsg": null,
+                        "exchangeBusinessNum": 0.01,
+                        "exchangeBusinessCount": null,
+                        "createDate": 1489721504000,
+                        "business": {
+                            "bId": 27,
+                            "bName": "支付中心",
+                            "bCode": "ZFZX",
+                            "bStatus": "NORMAL",
+                            "appid": "billing_ucmall_api",
+                            "signKey": "UM%dMcp(scO*0#sm0aJMM",
+                            "notifyUrl": "暂时不可用",
+                            "createDate": 1471919324000,
+                            "lastModifyTime": 1471919324000,
+                            "businessItem": null
+                        },
+                        "businessItem": {
+                            "biId": 14,
+                            "bId": 27,
+                            "biName": "盛天币",
+                            "biStatus": "NORMAL",
+                            "createDate": 1471919724000,
+                            "productExchangeNum": null
+                        }
+                    }
+                ],
+                "product": {
+                    "pId": 153,
+                    "pName": "虚拟物品1（卡密）",
+                    "pAliasName": "",
+                    "pType": "VIRTUAL",
+                    "pStatus": "NORMAL",
+                    "vipType": "UN_VIP",
+                    "eVipLowestLevel": 0,
+                    "eVipHighestLevel": 0,
+                    "originalPrice": null,
+                    "presentPrice": null,
+                    "stock": 1255,
+                    "description": "<p>2<br /></p>",
+                    "createDate": 1487665567000,
+                    "lastModify": 1494497233000,
+                    "enabledEndDate": null,
+                    "checkNum": 638,
+                    "exchangeNum": 45,
+                    "limitNum": 0,
+                    "exchangeArea": "0",
+                    "icon": "http://ucmall.stnts.com/img/default/20170327/10071e22-84c1-49b0-b193-71d3f2c00978.jpg",
+                    "limitStartDate": null,
+                    "attributes": [
+                        {
+                            "pid": 153,
+                            "attributeKey": "ICON",
+                            "attributeDefaultV": "default/20170327/10071e22-84c1-49b0-b193-71d3f2c00978.jpg",
+                            "attributeNumV": 0,
+                            "attributeDoubleV": null,
+                            "createDate": "2017-05-11 18:07:09"
+                        },
+                        {
+                            "pid": 153,
+                            "attributeKey": "EXCHANGE_ITEM",
+                            "attributeDefaultV": "17",
+                            "attributeNumV": 1,
+                            "attributeDoubleV": null,
+                            "createDate": "2017-05-11 18:07:09"
+                        }
+                    ]
+                },
+                "orderStatus": "SEND_SUCCESS",
+                "ordStatus": "2",
+                "exchangeBusinessCount": 1,
+                "shoppingMallOrderAddress": null,
+                "vCode": [
+                    {
+                        "id": 3562,
+                        "pid": 153,
+                        "cardNo": "ab1111111136",
+                        "cardPwd": "b1111111136",
+                        "uid": "30984039",
+                        "createTime": "2017-02-21 16:26:22.0",
+                        "updateTime": "2017-02-21 16:26:22.0",
+                        "orderId": "20170317113144ECCUNB",
+                        "type": "1"
+                    }
+                ],
+                "ip": "192.168.38.41",
+                "province": "",
+                "phone": "17311111121",
+                "email": "buu@uun.com",
+                "isLock": "1",
+                "bCode": null,
+                "express": null,
+                "bSource": null
+            },
+            {
+                "eId": 79503,
+                "eOrderId": "20170308181604KWJDRZ",
+                "pId": 153,
+                "passport": "zxm01",
+                "uid": 30984039,
+                "uType": "STNTS",
+                "eType": "VIRTUAL_ST_EXCHANGE",
+                "returnUrl": null,
+                "notifyUrl": null,
+                "createDate": "2017-03-08 18:16:04",
+                "addressId": null,
+                "exchangeStatuses": [
+                    {
+                        "eId": 79503,
+                        "bId": 27,
+                        "biId": 14,
+                        "exchangeBusinessStatus": "WAIT_CHARGE",
+                        "exchangeMsg": null,
+                        "exchangeBusinessNum": 0.01,
+                        "exchangeBusinessCount": null,
+                        "createDate": 1488968164000,
+                        "business": {
+                            "bId": 27,
+                            "bName": "支付中心",
+                            "bCode": "ZFZX",
+                            "bStatus": "NORMAL",
+                            "appid": "billing_ucmall_api",
+                            "signKey": "UM%dMcp(scO*0#sm0aJMM",
+                            "notifyUrl": "暂时不可用",
+                            "createDate": 1471919324000,
+                            "lastModifyTime": 1471919324000,
+                            "businessItem": null
+                        },
+                        "businessItem": {
+                            "biId": 14,
+                            "bId": 27,
+                            "biName": "盛天币",
+                            "biStatus": "NORMAL",
+                            "createDate": 1471919724000,
+                            "productExchangeNum": null
+                        }
+                    }
+                ],
+                "product": {
+                    "pId": 153,
+                    "pName": "虚拟物品1（卡密）",
+                    "pAliasName": "",
+                    "pType": "VIRTUAL",
+                    "pStatus": "NORMAL",
+                    "vipType": "UN_VIP",
+                    "eVipLowestLevel": 0,
+                    "eVipHighestLevel": 0,
+                    "originalPrice": null,
+                    "presentPrice": null,
+                    "stock": 1255,
+                    "description": "<p>2<br /></p>",
+                    "createDate": 1487665567000,
+                    "lastModify": 1494497233000,
+                    "enabledEndDate": null,
+                    "checkNum": 638,
+                    "exchangeNum": 45,
+                    "limitNum": 0,
+                    "exchangeArea": "0",
+                    "icon": "http://ucmall.stnts.com/img/default/20170327/10071e22-84c1-49b0-b193-71d3f2c00978.jpg",
+                    "limitStartDate": null,
+                    "attributes": [
+                        {
+                            "pid": 153,
+                            "attributeKey": "ICON",
+                            "attributeDefaultV": "default/20170327/10071e22-84c1-49b0-b193-71d3f2c00978.jpg",
+                            "attributeNumV": 0,
+                            "attributeDoubleV": null,
+                            "createDate": "2017-05-11 18:07:09"
+                        },
+                        {
+                            "pid": 153,
+                            "attributeKey": "EXCHANGE_ITEM",
+                            "attributeDefaultV": "17",
+                            "attributeNumV": 1,
+                            "attributeDoubleV": null,
+                            "createDate": "2017-05-11 18:07:09"
+                        }
+                    ]
+                },
+                "orderStatus": "EXCHANGE_CLOSE",
+                "ordStatus": "4",
+                "exchangeBusinessCount": 1,
+                "shoppingMallOrderAddress": null,
+                "vCode": [],
+                "ip": "192.168.32.211",
+                "province": "",
+                "phone": "17311111121",
+                "email": "buu@uun.com",
+                "isLock": "0",
+                "bCode": null,
+                "express": null,
+                "bSource": null
+            }
+        ],
+        "pagination": {
+            "totalRows": 10,
+            "curPage": 1,
+            "pageSize": 2,
+            "maxPage": 5,
+            "startRowIdx": 0,
+            "endRowIdx": 1,
+            "list": [],
+            "firstPage": true,
+            "lastPage": false,
+            "displayingPages": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "totalDisplayRecords": null,
+        "totalRecords": null
+    }
+}
+
+返回结果-失败：
+{
+	"status": "error",
+	"info": "查询失败",
+	"data": ""
+}
+
+
+7.兑换商品
+接口地址：/api/mall/exchange.do
+请求参数：
+pid：商品id
+bId：业务线id
+biId：货币id
+coinAmount：易力币数量
+addressId：地址id
+goodsAmount：商品数量
+
+返回结果-成功：
+{
+    "status": "success",
+    "info": "兑换成功",
+    "data": ""
+}
+
+返回结果-失败：
+{
+	"status": "error",
+	"info": "兑换失败",
+	"data": ""
+}	
+
+
+8.获取用户信息
+接口地址：/api/user/getUserInfo.do
+请求参数：无
+返回结果-成功：
+{
+    "status": "success",
+    "info": "查询成功",
+    "data": {
+	   "userInfo" : {
+	      "tuid" : 1001,                         // TUID
+		  "uid"  : 3245345,                      // 盛天通行证id 
+		  "passport" : "st_wsfdsf",              // 盛天通行证
+		  "avatarUrl" : "",                      // 微信头像
+		  "phone" : "13545327654",               // 手机号
+	      "realName" : "张杰",                   // 真实姓名
+		  "serviceArea" : "湖北省武汉市",        // 服务区域
+		  "companyName" : "盛天网络",            // 公司名称
+		  "yiliCoin" : 20,                       // 易力币余额
+		  "successSheetNum" : 10                 // 任务完成量  
+	   } 
+	}
+}	
+
+返回结果-失败：
+{
+	"status": "error",
+	"info": "查询失败",
+	"data": ""
+}
+	
+	
+9.保存用户信息
+接口地址：/api/user/saveUserInfo.do
+请求参数：
+method：请求类型，如果是保存用户信息，即手机号未绑定的用户，传save，如果是修改信息，传update
+phone：手机号，method为save时必传
+phoneCode：手机验证码，method为save时必传
+realName：真实姓名
+serviceArea：服务区域，例如：湖北省武汉市
+companyName：公司名称
+
+返回结果-成功：
+{
+    "status": "success",
+    "info": "保存成功",
+    "data": "" 
+}	
+
+返回结果-失败：
+{
+	"status": "error",
+	"info": "保存失败",
+	"data": ""
+}	
+	
+
+10.发送手机验证码
+接口地址：/api/user/sendPhoneCode.do
+请求参数：
+phone：手机号
+
+返回结果-成功：
+{
+    "status": "success",
+    "info": "验证码发送成功",
+    "data": "" 
+}	
+
+返回结果-失败：
+{
+	"status": "error",
+	"info": "发送失败",
+	"data": ""
+}		
+	
+	
+11.获取易力币明细列表
+接口地址：/api/user/getYiLiCoinDetailList.do
+请求参数：
+page：当前页码
+pageSize：每页显示条数
+返回结果-成功：
+{
+    "status": "success",
+    "info": "查询成功",
+    "data": {
+       "totalCount":100,//总记录数
+	   "page":1,//当前页码
+	   "pageSize":10,//每页显示记录数	
+	   "yiLiCoin":100,//易力币余额
+	   "datas" : [
+	      {
+		  "flag" : 0,                            // 易力币标识，0标识获取，1标识消耗
+		  "amount"  : 20,                        // 易力币数量 
+		  "description" : "新店出单20170731001", // 盛天通行证
+		  "createTime" : "2017-07-31 12:01:01"   // 创建时间
+		  }		  
+	   ]
+	}
+}	
+
+返回结果-失败：
+{
+	"status": "error",
+	"info": "查询失败",
+	"data": ""
+}	
+
+
+12.获取我的工单列表
+接口地址：/api/sheet/mySheetList.do
+请求参数：
+status：工单状态，0表示待审核，1表示审核通过，2表示审核不通过
+page：当前页码
+pageSize：每页显示条数
+返回结果-成功：
+{
+    "status": "success",
+    "info": "查询成功",
+    "data": {
+       "totalCount":100,//总记录数
+	   "page":1,//当前页码
+	   "pageSize":10,//每页显示记录数	
+	   "datas" : [
+	      {
+		  "id" : 1,                              // 工单id
+		  "sheetNum"  : "20170728001";           // 工单单号 
+		  "barName" : "盛天网咖";                // 网吧名称
+		  "thumbnailPicUrl" : "",                // 网吧缩略图url
+	      "sheetTypeDisplay" : "新店出单",       // 工单类型
+		  "createTime" : "2017-07-28 09:24:55",  // 提单时间
+		  "status" :   0,                        // 工单状态，0表示待接单，1表示已接单，2表示已驳回，3表示驳回重提待接单，4表示审核通过，5表示审核未通过，6表示已删除
+		  "statusDisplay" : "待接单",            // 工单状态对应的描述
+		  "approve_word" : "网吧规模不符",       // 审批寄语
+		  "yiLiCoin" : "20"                      // 该工单审批通过发放的易力币 
+		  }		  
+	   ]
+	}
+}	
+
+返回结果-失败：
+{
+	"status": "error",
+	"info": "查询失败",
+	"data": ""
+}
+
+
+13.查看工单
+接口地址：/api/sheet/viewSheet.do
+请求参数：
+id：工单id
+返回结果-成功：
+{
+    "status": "success",
+    "info": "查询成功",
+    "data": {
+		  "id" : 1,                              // 工单id
+		  "sheetNum"  : "20170728001";           // 工单单号 
+		  "gid"  : 123,                          // 网吧gid
+		  "barName" : "盛天网咖";                // 网吧名称
+		  "businessType" : 0,                    // 业务类型，0表示桌标业务 
+		  "businessTypeDisplay" : "桌标业务",    // 业务类型描述
+	      "enableDate" : "2017-07-25",           // 开通日期
+		  "barPhotoInfo" : {
+		       "pic1Url" : "",                   // 网吧第一张照片url   
+		       "pic1ThumbnailUrl" : "",          // 网吧第一张照片小图url
+               "pic1Address"	: "",            // 网吧第一张照片拍摄地点
+               "pic1Time"		: "",	         // 网吧第一张照片拍摄时间
+			   "pic2Url" : "",                   // 网吧第二张照片url   
+		       "pic2ThumbnailUrl" : "",          // 网吧第二张照片小图url
+               "pic2Address"	: "",            // 网吧第二张照片拍摄地点
+               "pic2Time"		: "",	         // 网吧第二张照片拍摄时间
+			   "pic3Url" : "",                   // 网吧第三张照片url   
+		       "pic3ThumbnailUrl" : "",          // 网吧第三张照片小图url
+               "pic3Address"	: "",            // 网吧第三张照片拍摄地点
+               "pic3Time"		: "",	         // 网吧第三张照片拍摄时间
+		  },
+		  "createTime" : "2017-07-28 09:24:55",  // 提单时间
+		  "status" :   0,                        // 工单状态，0表示待接单，1表示已接单，2表示已驳回，3表示驳回重提待接单，4表示审核通过，5表示审核未通过，6表示已删除
+		  "statusDisplay" : "待接单",            // 工单状态对应的描述
+		  "approve_word" : "网吧规模不符"        // 审批寄语
+	}
+}	
+
+返回结果-失败：
+{
+	"status": "error",
+	"info": "查询失败",
+	"data": ""
+}	
+	
+	
+13.获取用户定位信息
+接口地址：/api/sheet/getLocationInfo.do
+请求参数：无
+返回结果-成功：
+{
+    "status": "success",
+    "info": "获取位置信息成功",
+    "data": {
+	   "location" : "湖北省武汉市金融港三路"
+	}
+}	
+
+返回结果-失败：
+{
+	"status": "error",
+	"info": "获取位置信息失败",
+	"data": ""
+}	
+	
+	
+14.提交工单
+接口地址：/api/sheet/submitSheet.do
+请求参数：
+id：工单id，修改工单必传
+location：用户位置信息
+gid：网吧gid
+barName：网吧名称
+sheetType：工单类型，0表示新店出单，1表示新业务出单
+businessType：业务类型，0表示桌标业务
+enableDate：开通日期
+pic1Url：第一张照片url
+pic1ThumbnailUrl：第一张照片小图url
+pic1Address：第一张照片拍摄地点
+pic1Time：第一张照片拍摄时间
+pic2Url：第二张照片url
+pic2ThumbnailUrl：第二张照片小图url
+pic2Address：第二张照片拍摄地点
+pic2Time：第二张照片拍摄时间
+pic3Url：第三张照片url
+pic3ThumbnailUrl：第三张照片小图url
+pic3Address：第三张照片拍摄地点
+pic3Time：第三张照片拍摄时间
+
+返回结果-成功：
+{
+    "status": "success",
+    "info": "提交成功",
+    "data": ""
+}	
+
+OR
+
+{
+    "status": "success",
+    "info": "修改成功",
+    "data": ""
+}	
+
+返回结果-失败：
+{
+	"status": "error",
+	"info": "提交失败",
+	"data": ""
+}	
+	
+OR
+
+{
+    "status": "error",
+    "info": "修改失败",
+    "data": ""
+}		
+	
+15.删除工单
+接口地址：/api/sheet/deleteSheet.do
+请求参数：
+id：工单id	
+
+返回结果-成功：
+{
+    "status": "success",
+    "info": "删除成功",
+    "data": ""
+}	
+	
+返回结果-失败：
+{
+	"status": "error",
+	"info": "删除失败",
+	"data": ""
+}
+	
+16.图片上传
+接口地址：/api/file/fileUpload.do
+请求参数：
+file：文件流
+
+返回结果-成功：
+{
+    "status": "success",
+    "info": "上传成功",
+    "data": {
+	   "largePicUrl" : "",   //大图url
+	   "smallPicUrl" : ""    //小图url
+	}
+}		
+
+返回结果-失败：	
+{
+    "status": "error",
+    "info": "上传失败",
+    "data": ""
+}		
+	
+17.Base64上传
+接口地址：/api/file/base64Upload.do
+请求参数：
+base64Data：base64编码之后的内容
+
+返回结果-成功：
+{
+    "status": "success",
+    "info": "上传成功",
+    "data": {
+	   "largePicUrl" : "",   //大图url
+	   "smallPicUrl" : ""    //小图url
+	}
+}		
+
+返回结果-失败：	
+{
+    "status": "error",
+    "info": "上传失败",
+    "data": ""
+}	

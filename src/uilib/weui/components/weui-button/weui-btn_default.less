@@ -1,0 +1,19 @@
+/*
+* 模块描述:组件-默认按钮
+*/
+@charset "UTF-8";
+
+@import "../../base/fn";
+
+
+.weui-btn_default {
+    color: @weuiBtnDefaultFontColor;
+    background-color: @weuiBtnDefaultBg;
+    &:not(.weui-btn_disabled):visited {
+        color: @weuiBtnDefaultFontColor;
+    }
+    &:not(.weui-btn_disabled):active {
+        color: @weuiBtnDefaultActiveFontColor;
+        background-color: @weuiBtnDefaultActiveBg;
+    }
+}

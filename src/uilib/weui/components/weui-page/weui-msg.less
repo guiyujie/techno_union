@@ -1,0 +1,51 @@
+/*
+* 模块描述:组件-msg失败提示页/成功提示页
+*/
+@charset "UTF-8";
+
+
+@import "../../base/fn";
+@import "../weui-button/weui-button";
+
+.weui-msg {
+    padding-top: @weuiMsgPaddingTop;
+    text-align: center;
+}
+.weui-msg__icon-area {
+    margin-bottom: @weuiMsgIconGap;
+}
+.weui-msg__text-area {
+    margin-bottom: @weuiMsgTextGap;
+    padding:0 40/75rem;
+}
+.weui-msg__text-area a{
+    color:@weuiLinkColorDefault;
+}
+.weui-msg__title {
+    margin-bottom: @weuiMsgTitleGap;
+    font-weight: 400;
+    font-size: 40/75rem;
+}
+.weui-msg__desc {
+    font-size: 28/75rem;
+    color: @weuiTextColorGray;
+}
+.weui-msg__opr-area {
+    margin-bottom: @weuiMsgOprGap;
+}
+.weui-msg__extra-area {
+    margin-bottom: @weuiMsgExtraAreaGap;
+    font-size: 28/75rem;
+    color: @weuiTextColorGray;
+    a{color: @weuiLinkColorDefault;}
+}
+
+@media screen and (min-height: @weuiMsgExtraAreaOfMinHeight) {
+    .weui-msg__extra-area {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+    }
+}

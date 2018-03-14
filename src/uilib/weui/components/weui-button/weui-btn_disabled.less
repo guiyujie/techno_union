@@ -1,0 +1,22 @@
+/*
+* 模块描述:组件-按钮禁用
+*/
+@charset "UTF-8";
+
+
+@import "../../base/fn";
+
+.weui-btn_disabled {
+    color: @weuiBtnDisabledFontColor;
+    &.weui-btn_default {
+        color: @weuiBtnDefaultDisabledFontColor;
+        background-color: @weuiBtnDefaultDisabledBg;
+    }
+    &.weui-btn_primary {
+        background: none;
+        background-color: @weuiBtnPrimaryDisabledBg;
+    }
+    &.weui-btn_warn {
+        background-color: @weuiBtnwarnDisabledBg;
+    }
+}

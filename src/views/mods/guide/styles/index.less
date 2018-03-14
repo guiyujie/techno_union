@@ -1,0 +1,110 @@
+@import (reference) '~utils/common.less';
+
+
+
+/*定义动画*/
+@-webkit-keyframes spin { /*兼容性写法。spin是关键帧的动画名称*/
+    from { /*动画起始状态*/
+        -webkit-transform: rotate(0deg);
+    }
+    to { /*动画结束状态*/
+        -webkit-transform: rotate(360deg);
+    }
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+//空内容遮罩
+.mask{
+    background:#000;
+    opacity: .5;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 200;
+    left: 0;
+    top: 0;
+}
+.con{
+    position: fixed;
+    z-index: 300;
+    width: 100%;
+    top: 20%;
+    text-align: center;
+}
+.tips{
+    height: 450/75rem;
+    .box-hvcenter();
+}
+.img_bg{
+    height: 450/75rem;
+    //background:url("../styles/bg.png") no-repeat center;
+    position: absolute;
+    width: 100%;
+    -webkit-animation: spin 3s linear infinite;
+    animation: spin 3s linear infinite;
+}
+.img_bg1{
+    height: 450/75rem;
+    background: url("../styles/bg1.png") no-repeat center;
+    background-size: contain;
+    position: absolute;
+    width: 100%;
+}
+.img{
+    position: absolute;
+    width: 100%;
+    height: 450/75rem;
+    display: flex;
+    .box-hvcenter();
+    img{
+       width: 300/75rem;
+    }
+}
+
+.txt{
+    margin: 0 0 30/75rem 0;
+    p{
+        color: #Fff;
+        text-align: center;
+        font-size: 50/75rem;
+        label{
+            color: #ffaf04;
+            margin: 0 10/75rem;
+        }
+    }
+}
+.arrow{
+    height: 100/75rem;
+}
+
+.close{
+    position: absolute;
+    top:0;
+    right: 15%;
+    width: 60/75rem;
+    height: 60/75rem;
+    i{
+        font-size: 60/75rem;
+        color: #fff;
+    }
+}
+
+.btn{
+    color: #fff;
+    background:#0FAEFF;
+    width: 240/75rem;
+    padding: 10/75rem 50/75rem;
+    text-align: center;
+    border: none;
+    font-size: 30/75rem;
+    border-radius: 30/75rem;
+    margin: 0 auto;
+    cursor: pointer;
+}

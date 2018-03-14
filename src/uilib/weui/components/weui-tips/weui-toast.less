@@ -1,0 +1,49 @@
+/*
+*模块描述：组件-toast提示（3秒消失）
+*/
+@charset "UTF-8";
+
+
+@import "../../base/fn";
+
+.weui-toast {
+    position: fixed;
+    z-index: 5000;
+    width: 500/75rem;
+    min-height: 160/75rem;
+    top: 360/75rem;
+    left: 50%;
+    margin-left: -250/75rem;
+    background: rgba(17,17,17,0.7);
+    text-align: center;
+    border-radius: 5px;
+    color: #FFFFFF;
+    -webkit-justify-content: center;//子元素水平居中
+    -webkit-align-items: center;//子元素垂直居中
+    display:flex;
+
+}
+.weui-icon_toast {
+    margin: 44/75rem 0 0;
+    display: none;//暂隐藏icon
+    &.weui-icon-success-no-circle{
+      &:before {
+          color: #FFFFFF;
+          font-size: 1rem;
+      }
+    }
+    &.weui-loading{
+      margin:30/75rem 0 0;
+      width:76/75rem;
+      height:76/75rem;
+      vertical-align: baseline;
+    }
+}
+
+.weui-toast_content {
+    padding: 0.5rem;
+    font-size: 30/75rem;
+    -webkit-justify-content: center;//子元素水平居中
+    -webkit-align-items: center;//子元素垂直居中
+    display:flex;
+}

@@ -1,0 +1,20 @@
+/*
+* 模块描述:组件-按钮-主操作按钮
+*/
+@charset "UTF-8";
+
+
+@import "../../base/fn";
+
+
+
+.weui-btn_primary {
+    .gradient();
+    &:not(.weui-btn_disabled):visited {
+        color: @weuiBtnFontColor;
+    }
+    &:not(.weui-btn_disabled):active {
+        color: @weuiBtnActiveFontColor;
+        .gradient(to right);
+    }
+}

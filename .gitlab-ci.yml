@@ -1,0 +1,126 @@
+# 设置`docker`镜像为最新的`nodejs`稳定版（nova项目组维护）
+image: dchub.stnts.com/nova/nodejs:latest
+
+# 打通`runner`机器和`docker`容器
+before_script:
+  # Install ssh-agent if not already installed, it is required by Docker.
+  # (change apt-get to yum if you use a CentOS-based image)
+  - 'which ssh-agent || ( yum update -y && yum install openssh-client -y )'
+
+  # Run ssh-agent (inside the build environment)
+  - eval $(ssh-agent -s)
+
+  # Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
+  - ssh-add <(echo "$SSH_PRIVATE_KEY")
+
+  # For Docker builds disable host key checking. Be aware that by adding that
+  # you are suspectible to man-in-the-middle attacks.
+  # WARNING: Use this only with the Docker executor, if you use it with shell
+  # you will overwrite your user's SSH config.
+  - mkdir -p ~/.ssh
+  - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  # In order to properly check the server's host key, assuming you created the
+  # SSH_SERVER_HOSTKEYS variable previously, uncomment the following two lines
+  # instead.
+  # - mkdir -p ~/.ssh
+  # - '[[ -f /.dockerenv ]] && echo "$SSH_SERVER_HOSTKEYS" > ~/.ssh/known_hosts'
+
+  # make sure PATH is correct
+  - source /etc/profile
+
+# 执行步骤
+stages:
+  # 依赖安装
+  - install
+  # 自动化测试
+  # - test
+  # 代码构建
+  - build
+  # 项目部署
+  - deploy
+  # 项目提交至管理平台
+  - publish
+
+
+# 缓存node_modules, dist 避免下一个job前被删除
+cache:
+  key: "${CI_COMMIT_REF_NAME}"
+  untracked: true
+  paths:
+    - dist/
+    - node_modules/
+
+# 安装依赖包
+job_install_packages:
+  stage: install
+  script:
+    # 开始安装
+    - echo "begin installing..."
+    # 安装模块依赖：包含deps和devDeps
+    - npm install
+  except:
+    - master
+
+# 自动化测试
+#job_for_unit_test:
+  #stage: test
+  #script:
+    # 开始跑测试（待做）
+    #- echo "todo: testing"
+
+# 构建打包
+job_build_bundles:
+  stage: build
+  script:
+    # 开始构建
+    - echo "begin building..."
+    # 执行代码构建
+    - npm run build
+  except:
+    - master
+
+# 联调环境部署（自动）
+job_deploy_to_development:
+  stage: deploy
+  environment:
+    name: development
+  script:
+    # 开始部署
+    - echo "deploying..."
+    # 打包到docker镜像：传入项目镜像名
+    # - bash ./build.sh
+  # 仅`dev`分支生效
+  only:
+    - dev
+
+# 测试环境部署（手动）
+job_deploy_to_testing:
+  stage: deploy
+  environment:
+    name: testing
+  script:
+    # 开始部署
+    - echo "deploying..."
+    # 执行部署脚本：传入测试服务器地址、开发端口、部署目录、构建目录
+    - bash ./deploy.sh "$TESTING_SERVER" "$TESTING_SERVER_PORT" "$TESTING_SERVER_DEPLOY_DIR" "dist"
+  # 需要手动部署
+  when: manual
+  # 仅`test`分支生效
+  only:
+    - test
+
+# 管理平台发布部署（手动）
+job_deploy_to_testing:
+  stage: publish
+  environment:
+    name: publish
+  script:
+    # 开始部署
+    - echo "publishing..."
+    # 执行发布到管理平台脚本：传入服务器地址、开发端口、部署目录、构建目录
+    - bash ./deploy_publish.sh "$TESTING_SERVER" "$TESTING_SERVER_PORT" "$TESTING_SERVER_DEPLOY_DIR" "dist"
+  # 需要手动部署
+  when: manual
+  # 仅`test`分支生效
+  only:
+    - publish
